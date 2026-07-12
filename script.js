@@ -65,12 +65,14 @@ if(menuBtn && mobilePanel){
     mobilePanel.classList.remove('open');
     document.body.classList.remove('menu-open');
     menuBtn.textContent = '☰';
+    menuBtn.setAttribute('aria-expanded', 'false');
   };
 
   menuBtn.addEventListener('click', ()=>{
     const isOpen = mobilePanel.classList.toggle('open');
     document.body.classList.toggle('menu-open', isOpen);
     menuBtn.textContent = isOpen ? '✕' : '☰';
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
   });
 
   mobilePanel.querySelectorAll('a').forEach(a=>{
